@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivFemaleBack"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/ivFemaleFront"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/image_border" />
+
+    <ImageView
+        android:id="@+id/ivMaleFront"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="154dp"
+        android:background="@drawable/image_border" />
+
+    <ImageView
+        android:id="@+id/ivMaleBack"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/ivMaleFront"
+        android:layout_marginStart="100dp"
+        android:background="@drawable/image_border" />
+
+    <ImageView
+        android:id="@+id/ivFemaleFront"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/ivMaleBack"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/image_border" />
+
+    <TextView
+        android:id="@+id/tvSecondName"
+        android:layout_width="match_parent"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="NAME"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tvFemale"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/ivFemaleFront"
+        android:layout_alignTop="@+id/tvMale"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:text="FEMALE"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMale"
+        android:layout_width="145dp"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/ivMaleBack"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="111dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:text="MALE"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMaleFront"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:layout_alignStart="@+id/ivMaleFront"
+        android:layout_marginTop="233dp"
+        android:textStyle="bold"
+        android:text="Front" />
+
+    <TextView
+        android:id="@+id/tvMaleBack"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ivMaleBack"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_alignTop="@+id/tvMaleFront"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/tvFemaleFront"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_alignStart="@+id/ivFemaleFront"
+        android:layout_alignTop="@+id/tvMaleFront"
+        android:gravity="center"
+        android:text="Front" />
+
+    <TextView
+        android:id="@+id/tvFemaleBack"
+        android:layout_width="68dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ivFemaleBack"
+        android:layout_alignTop="@+id/tvMaleFront"
+        android:text="Back" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpInfo"
+        android:layout_width="match_parent"
+        android:layout_height="285dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:background="#efefef"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/colorPrimary"
+        android:layout_above="@+id/vpInfo"
+        android:layout_alignParentStart="true">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basic Info" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abilities" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stats" />
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Items" />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:layout_above="@id/tabLayout"
+        android:orientation="horizontal" />
+
+
+</RelativeLayout>

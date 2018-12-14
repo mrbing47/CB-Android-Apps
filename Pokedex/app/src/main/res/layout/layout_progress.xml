@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.app.progresviews.ProgressWheel
+        android:id="@+id/wheelprogress"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:progressColor="@color/colorPrimaryDark"
+        app:defTextSize="20sp"/>
+
+        <!--android:barWidth="17dp"-->
+        <!--android:marginBtwText= "15dp"-->
+        <!--android:countText="931,199"-->
+        <!--android:definitionText="Steps"-->
+        <!--android:countTextColor="@android:color/black"-->
+        <!--android:defTextColor="@android:color/black"-->
+        <!--android:progressColor="#64b324"-->
+        <!--android:defTextSize="10sp"-->
+        <!--android:countTextSize="20sp"-->
+        <!--android:percentage="90"/>-->
+
+
+</android.support.constraint.ConstraintLayout>

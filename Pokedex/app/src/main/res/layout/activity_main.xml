@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/jungle2"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/tvBaseExp"
+        android:layout_width="79dp"
+        android:layout_height="57dp"
+        android:layout_above="@+id/ivPokemon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-104dp"
+        android:layout_marginRight="37dp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="38sp" />
+
+    <TextView
+        android:id="@+id/tvRanktxt"
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvBaseExp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="35dp"
+        android:gravity="center"
+        android:text="RANK"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/ibNext"
+        android:layout_width="44dp"
+        android:layout_height="102dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="187dp"
+        android:background="@color/colorPrimaryDark"
+        android:src="@drawable/ic_chevron_right" />
+
+    <ImageView
+        android:id="@+id/ivPokemon"
+        android:layout_width="198dp"
+        android:layout_height="198dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/image_border" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="295dp"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="152dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="NAME"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etInput"
+        android:layout_width="83dp"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginBottom="23dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSearch"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/etInput"
+        android:layout_toEndOf="@+id/etInput"
+        android:src="@drawable/ic_magnifier" />
+
+    <ImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="44dp"
+        android:layout_height="102dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/ibNext"
+        android:background="@color/colorPrimaryDark"
+        android:src="@drawable/ic_chevron_left" />
+
+    <TextView
+        android:id="@+id/tvBaseExptxt"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvBaseExp"
+        android:layout_alignEnd="@+id/tvBaseExp"
+        android:gravity="center"
+        android:text="BASE EXPERINCE"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRank"
+        android:layout_width="69dp"
+        android:layout_height="57dp"
+        android:layout_alignStart="@+id/tvRanktxt"
+        android:layout_alignTop="@+id/tvBaseExp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="38sp" />
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/aguafina_script</item>
+        <item>@font/aladin</item>
+        <item>@font/alex_brush</item>
+        <item>@font/allan</item>
+        <item>@font/allerta_stencil</item>
+        <item>@font/almendra_display</item>
+        <item>@font/architects_daughter</item>
+        <item>@font/aref_ruqaa</item>
+        <item>@font/arizonia</item>
+        <item>@font/artifika</item>
+        <item>@font/audiowide</item>
+        <item>@font/bangers</item>
+        <item>@font/caesar_dressing</item>
+        <item>@font/calligraffitti</item>
+    </array>
+</resources>

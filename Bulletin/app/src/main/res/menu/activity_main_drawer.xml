@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="India">
+        <menu>
+            <item
+                android:id="@+id/googlenews"
+                android:title="Google News" />
+            <item
+                android:id="@+id/thehindu"
+                android:title="The Hindu" />
+            <item
+                android:id="@+id/toi"
+                android:title="The Times Of India" />
+
+        </menu>
+    </item>
+
+    <item android:title="Entertainment">
+        <menu>
+            <item
+                android:id="@+id/buzzfeed"
+                android:title="Buzzfeed" />
+            <item
+                android:id="@+id/ent_weekly"
+                android:title="Entertainment Weekly" />
+            <item
+                android:id="@+id/ign"
+                android:title="IGN" />
+            <item
+                android:id="@+id/mtv"
+                android:title="MTV News" />
+        </menu>
+    </item>
+
+    <item android:title="Sports">
+        <menu>
+            <item
+                android:id="@+id/bbcsports"
+                android:title="BBC Sports" />
+            <item
+                android:id="@+id/espn"
+                android:title="ESPN" />
+            <item
+                android:id="@+id/espncric"
+                android:title="ESPN Cric Info" />
+            <item
+                android:id="@+id/fox_sports"
+                android:title="Fox Sports" />
+            <item
+                android:id="@+id/talksport"
+                android:title="TalkSport" />
+
+        </menu>
+    </item>
+
+    <item android:title="Technology">
+        <menu>
+            <item
+                android:id="@+id/engadget"
+                android:title="Engadget" />
+            <item
+                android:id="@+id/techcrunch"
+                android:title="TechCrunch" />
+            <item
+                android:id="@+id/theverge"
+                android:title="The Verge" />
+            <item
+                android:id="@+id/wired"
+                android:title="Wired" />
+        </menu>
+    </item>
+
+</menu>

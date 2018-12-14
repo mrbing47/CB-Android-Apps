@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "65021225130",
+    "firebase_url": "https://mybuddy-89980.firebaseio.com",
+    "project_id": "mybuddy-89980",
+    "storage_bucket": "mybuddy-89980.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65021225130:android:ccdd612d5b1dd6f8",
+        "android_client_info": {
+          "package_name": "com.hhm.india.sosmybuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65021225130-6fdrn6fk21j0i3be0m3nemlh6615qo68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hhm.india.sosmybuddy",
+            "certificate_hash": "d7a1a2fcdf5a7a06c96eaed40cc887b2dda8b08d"
+          }
+        },
+        {
+          "client_id": "65021225130-8u5spuh43ubhnbvjhcgahm2fd0m7r8fm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0w61ux8_6BIcV0oVtkX60s03kfYE7KHw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65021225130-8u5spuh43ubhnbvjhcgahm2fd0m7r8fm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

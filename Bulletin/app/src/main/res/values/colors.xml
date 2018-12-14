@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#FF9800</color>
+    <color name="colorPrimary">#FFA000</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="authorName_Quotes">#388E3C</color>
+    <color name="color_news">#009688</color>
+    <color name="color_tech">#000</color>
+    <color name="color_sports">#8BC34A</color>
+    <color name="color_ent">#7C4DFF</color>
+</resources>
