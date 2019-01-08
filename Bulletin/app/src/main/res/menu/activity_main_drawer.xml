@@ -47,9 +47,6 @@
                 android:id="@+id/espncric"
                 android:title="ESPN Cric Info" />
             <item
-                android:id="@+id/fox_sports"
-                android:title="Fox Sports" />
-            <item
                 android:id="@+id/talksport"
                 android:title="TalkSport" />
 

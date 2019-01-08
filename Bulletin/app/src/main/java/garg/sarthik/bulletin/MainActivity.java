@@ -146,12 +146,6 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
 
-            case R.id.fox_sports:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container,new Frag_News().newInstance("https://newsapi.org/v2/top-headlines?sources=fox-sports&apiKey=3fe5f4592f844dcf9e6fb9abe46aba03",News_Constants.NEWS_SPORTS))
-                        .commit();
-                break;
             case R.id.talksport:
                 getSupportFragmentManager()
                         .beginTransaction()
