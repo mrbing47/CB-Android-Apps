@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegEmail"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:hint="Email ID" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterMaxLength="10"
+        app:counterOverflowTextAppearance="@style/CounterOverFlow"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="Phone Number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegAuthId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Authority ID" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegBranch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Branch Name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/btnRegSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimaryDark"
+            android:text="Register"
+            android:textColor="@color/colorWhite" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

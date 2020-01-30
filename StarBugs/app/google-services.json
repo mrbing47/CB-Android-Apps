@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "450899693729",
+    "firebase_url": "https://star-bugs.firebaseio.com",
+    "project_id": "star-bugs",
+    "storage_bucket": "star-bugs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450899693729:android:9bdc98b2f9fd6285ede0e0",
+        "android_client_info": {
+          "package_name": "garg.sarthik.starbugs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450899693729-clmukdpvifqt8meaeeijtnhavpgpkeet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "garg.sarthik.starbugs",
+            "certificate_hash": "c92614cc98c32266ac3965ef2cbfe4ba97869aba"
+          }
+        },
+        {
+          "client_id": "450899693729-je5tft4cslcueef709vfon500ce4saq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7YTiB4lItHg5YUt8YFH_lpBOcR0HytFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450899693729-je5tft4cslcueef709vfon500ce4saq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

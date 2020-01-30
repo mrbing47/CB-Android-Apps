@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/itemMapView"
+            android:layout_width="match_parent"
+            android:layout_height="172dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvItemLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/josefinsans_regular"
+                    android:hint="Event Location"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvItemDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/josefinsans_regular"
+                    android:hint="Date and time"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/itemLayoutButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+               android:padding="4dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorGreen"
+                    app:srcCompat="@drawable/ic_check_white"
+                    android:layout_margin="4dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorRed"
+                    app:srcCompat="@drawable/ic_close_white"
+                    android:layout_margin="4dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
