@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -50,7 +51,6 @@ public class ProfileFragment extends Fragment {
 
         changeEditState(false);
 
-
         fabEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,11 +64,22 @@ public class ProfileFragment extends Fragment {
                         return;
                     }
 
-                    profileViewModel.EditUserData(new User(Variables.user.getUserName(), Variables.user.getUserEmail(),phone, authId, branch));
+                    profileViewModel.EditUserData(new User(Variables.user.getUserName(), Variables.user.getUserEmail(),phone, authId, branch, Variables.user.getUserToken()));
                     changeEditState(false);
                 }else{
                     changeEditState(true);
                 }
+            }
+        });
+
+        profileViewModel.getUser().observe((LifecycleOwner) getContext(), new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                tvEmail.setText(user.getUserEmail());
+                tvName.setText(user.getUserName());
+                etAuthId.setText(user.getUserAuthId());
+                etPhone.setText(user.getUserNumber());
+                etBranch.setText(user.getUserBranch());
             }
         });
         return root;
@@ -86,6 +97,7 @@ public class ProfileFragment extends Fragment {
             etPhone.setEnabled(true);
             etBranch.setEnabled(true);
 
+            fabEdit.setImageResource(R.drawable.ic_check_white);
 
         }else{
             etBranch.setBackgroundColor(Color.TRANSPARENT);
@@ -95,6 +107,8 @@ public class ProfileFragment extends Fragment {
             etAuthId.setEnabled(false);
             etPhone.setEnabled(false);
             etBranch.setEnabled(false);
+
+            fabEdit.setImageResource(R.drawable.ic_edit_white);
 
         }
     } 

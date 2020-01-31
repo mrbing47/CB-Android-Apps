@@ -13,6 +13,7 @@ public class ProfileViewModel extends ViewModel {
 
     public ProfileViewModel() {
         mUser = new MutableLiveData<>();
+        mUser.setValue(Variables.user);
     }
 
     public LiveData<User> getUser() {
@@ -22,5 +23,7 @@ public class ProfileViewModel extends ViewModel {
     public void EditUserData(User user){
         Variables.user = user;
         mUser.setValue(user);
+
+        Variables.colUser.document(Variables.fireUser.getUid()).set(user);
     }
 }

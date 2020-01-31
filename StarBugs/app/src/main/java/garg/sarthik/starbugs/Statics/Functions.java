@@ -1,12 +1,34 @@
 package garg.sarthik.starbugs.Statics;
 
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 public class Functions {
+
+    public static String decodeAddress(Context ctx, LatLng latlng){
+        Geocoder geocoder = new Geocoder(ctx, Locale.getDefault());
+
+        try {
+            List<Address> addressList = geocoder.getFromLocation(latlng.latitude, latlng.longitude,1);
+            if(addressList.size() > 0)
+                return addressList.get(0).getAddressLine(0);
+            else
+                return latlng.latitude + " , " + latlng.longitude;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return latlng.latitude + " , " + latlng.longitude;
+        }
+    }
 
 
     public static LatLng getLatLng(String str){

@@ -7,16 +7,22 @@ public class User {
     String userNumber;
     String userAuthId;
     String userBranch;
+    String userToken;
 
     public User() {
     }
 
-    public User(String userName, String userEmail, String userNumber, String userAuthId, String userBranch) {
+    public User(String userName, String userEmail, String userNumber, String userAuthId, String userBranch, String userToken) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNumber = userNumber;
         this.userAuthId = userAuthId;
         this.userBranch = userBranch;
+        this.userToken = userToken;
+    }
+
+    public String getUserToken() {
+        return userToken;
     }
 
     public String getUserName() {

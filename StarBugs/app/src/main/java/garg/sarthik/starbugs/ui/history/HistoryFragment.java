@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 import garg.sarthik.starbugs.Adapters.NotificationAdapter;
@@ -46,6 +47,8 @@ public class HistoryFragment extends Fragment {
 
                     tvHistory.setVisibility(View.GONE);
                     rvHistory.setVisibility(View.VISIBLE);
+
+                    Collections.reverse(events);
 
                     rvHistory.setLayoutManager(new LinearLayoutManager(getContext()));
                     rvHistory.setAdapter(new NotificationAdapter(events, getContext(), HistoryFragment.this));

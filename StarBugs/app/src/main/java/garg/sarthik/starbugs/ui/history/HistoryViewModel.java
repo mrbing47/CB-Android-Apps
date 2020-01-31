@@ -1,10 +1,13 @@
 package garg.sarthik.starbugs.ui.history;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -20,7 +23,7 @@ public class HistoryViewModel extends ViewModel {
 
     public HistoryViewModel() {
         mEvents = new MutableLiveData<>();
-        List<Event> events = new ArrayList<>();
+        /*List<Event> events = new ArrayList<>();
 
         events.add(new Event(1,"77 , 80", "202001240821"));
         events.add(new Event(23,"25 , 33", "202001240821"));
@@ -29,13 +32,15 @@ public class HistoryViewModel extends ViewModel {
         events.add(new Event(88,"69 , 55", "202001240821"));
         events.add(new Event(45,"7 , 8", "202001240821"));
 
-        /*Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_HISTORY).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        mEvents.setValue(events);
+*/
+        Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_HISTORY).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 mEvents.setValue(queryDocumentSnapshots.toObjects(Event.class));
             }
-        });*/
-        mEvents.setValue(events);
+        });
+
     }
 
     public LiveData<List<Event>> getEvents() {

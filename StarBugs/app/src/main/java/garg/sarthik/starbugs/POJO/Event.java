@@ -7,10 +7,23 @@ import garg.sarthik.starbugs.Statics.Functions;
 
 public class Event implements Parcelable {
 
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
     String eventId;
     String eventLatlng;
     String eventStartTime;
     String eventEndTime;
+    String eventStatus;
+
 
     public Event() {
     }
@@ -29,19 +42,8 @@ public class Event implements Parcelable {
         eventLatlng = in.readString();
         eventStartTime = in.readString();
         eventEndTime = in.readString();
+        eventStatus = in.readString();
     }
-
-    public static final Creator<Event> CREATOR = new Creator<Event>() {
-        @Override
-        public Event createFromParcel(Parcel in) {
-            return new Event(in);
-        }
-
-        @Override
-        public Event[] newArray(int size) {
-            return new Event[size];
-        }
-    };
 
     public String getEventId() {
         return eventId;
@@ -67,6 +69,14 @@ public class Event implements Parcelable {
         this.eventEndTime = eventEndTime;
     }
 
+    public String getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(String eventStatus) {
+        this.eventStatus = eventStatus;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,5 +88,6 @@ public class Event implements Parcelable {
         dest.writeString(eventLatlng);
         dest.writeString(eventStartTime);
         dest.writeString(eventEndTime);
+        dest.writeString(eventStatus);
     }
 }

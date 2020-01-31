@@ -20,14 +20,20 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.SetOptions;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import garg.sarthik.starbugs.POJO.Event;
 import garg.sarthik.starbugs.R;
+import garg.sarthik.starbugs.Statics.Constants;
 import garg.sarthik.starbugs.Statics.Functions;
+import garg.sarthik.starbugs.Statics.Variables;
 import garg.sarthik.starbugs.ui.history.HistoryFragment;
 import garg.sarthik.starbugs.ui.notifications.NotificationsFragment;
 
@@ -58,26 +64,33 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        /*if(obj instanceof HistoryFragment)
+        final Event event = events.get(position);
+
+        if(obj instanceof HistoryFragment)
             holder.itemLayoutButtons.setVisibility(GONE);
-        else
-            holder.itemLayoutButtons.setVisibility(View.VISIBLE);*/
+        else {
+            holder.itemLayoutButtons.setVisibility(View.VISIBLE);
 
-        Log.i(TAG, "onBindViewHolder: " + obj.getClass());
+            holder.fabReject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateEvent(event, "REJECT");
+                }
+            });
 
+            holder.fabAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateEvent(event, "ACCEPT");
+                }
+            });
+        }
 
-        Event event = events.get(position);
 
         LatLng latlng = Functions.getLatLng(event.getEventLatlng());
 
-        Geocoder geocoder = new Geocoder(ctx, Locale.getDefault());
-
-        try {
-            String address =  geocoder.getFromLocation(latlng.latitude, latlng.longitude, 1).get(0).getAddressLine(0);
-            holder.tvItemLocation.setText(address);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String address = Functions.decodeAddress(ctx,latlng);
+        holder.tvItemLocation.setText(address);
         holder.tvItemDate.setText(Functions.formatDateTime(event.getEventStartTime()));
 
         holder.mapView.onCreate(null);
@@ -108,6 +121,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         MapView mapView;
         TextView tvItemDate;
         TextView tvItemLocation;
+        FloatingActionButton fabAccept;
+        FloatingActionButton fabReject;
         LinearLayout itemLayoutButtons;
 
         public ViewHolder(@NonNull View itemView) {
@@ -117,8 +132,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             tvItemLocation = itemView.findViewById(R.id.tvItemLocation);
             mapView = itemView.findViewById(R.id.itemMapView);
             itemLayoutButtons = itemView.findViewById(R.id.itemLayoutButtons);
+            fabAccept = itemView.findViewById(R.id.fabAccept);
+            fabReject = itemView.findViewById(R.id.fabReject);
 
         }
 
+    }
+
+
+    private void updateEvent(Event event, String status){
+        event.setEventStatus(status);
+
+        Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_HISTORY).document(event.getEventId()).set(event);
+        Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_NOTIFICATION).document(event.getEventId()).delete();
     }
 }

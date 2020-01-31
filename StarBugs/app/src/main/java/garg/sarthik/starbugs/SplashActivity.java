@@ -20,9 +20,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import garg.sarthik.starbugs.POJO.User;
 import garg.sarthik.starbugs.Statics.Constants;
@@ -69,7 +74,22 @@ public class SplashActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
+
                             Variables.user = documentSnapshot.toObject(User.class);
+
+                            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                                @Override
+                                public void onSuccess(InstanceIdResult instanceIdResult) {
+                                    if(!instanceIdResult.getToken().equals(Variables.user.getUserToken())){
+                                        Map<String, Object> data = new HashMap<>();
+                                        data.put("userToken", instanceIdResult.getToken());
+
+                                        Variables.colUser.document(Variables.fireUser.getUid()).set(data, SetOptions.merge());
+                                    }
+                                }
+                            });
+
+
                             startActivity(new Intent(SplashActivity.this, MainActivity.class));
                             finish();
                         }else{

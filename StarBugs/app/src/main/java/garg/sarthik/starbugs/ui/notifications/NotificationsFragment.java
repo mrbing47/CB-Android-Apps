@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 import garg.sarthik.starbugs.Adapters.NotificationAdapter;
@@ -48,6 +49,8 @@ public class NotificationsFragment extends Fragment {
 
                     tvNotification.setVisibility(View.GONE);
                     rvNotification.setVisibility(View.VISIBLE);
+
+                    Collections.reverse(events);
 
                     rvNotification.setLayoutManager(new LinearLayoutManager(getContext()));
                     rvNotification.setAdapter(new NotificationAdapter(events, getContext(), NotificationsFragment.this));
