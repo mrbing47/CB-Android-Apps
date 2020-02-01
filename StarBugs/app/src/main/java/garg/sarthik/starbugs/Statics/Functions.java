@@ -80,7 +80,7 @@ public class Functions {
         if(currTime.length() == 3)
             currTime = "0" + currTime;
 
-        return "" + getCurrentDate() + currTime + serialNo;
+        return "" + getCurrentDate() + currTime + "-" +  serialNo;
     }
 
     public static String toCapitalise(String txt) {

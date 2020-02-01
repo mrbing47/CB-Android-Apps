@@ -143,7 +143,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private void updateEvent(Event event, String status){
         event.setEventStatus(status);
 
+        String[] args = event.getEventId().split("-");
+
         Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_HISTORY).document(event.getEventId()).set(event);
+        Variables.colCamera.document(args[1]).collection(Constants.COL_HISTORY).document(args[0]).set(event);
         Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_NOTIFICATION).document(event.getEventId()).delete();
     }
 }

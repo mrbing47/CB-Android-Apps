@@ -18,6 +18,7 @@ public class Event implements Parcelable {
             return new Event[size];
         }
     };
+
     String eventId;
     String eventLatlng;
     String eventStartTime;
