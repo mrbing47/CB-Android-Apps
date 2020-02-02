@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,11 +20,13 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import garg.sarthik.starbugs.POJO.User;
 import garg.sarthik.starbugs.Statics.Variables;
+import io.opencensus.metrics.LongGauge;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private String TAG = "Reg";
 
+    LinearLayout llRegister;
     TextInputEditText etName;
     TextInputEditText etEmail;
     TextInputEditText etNumber;
@@ -36,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        llRegister = findViewById(R.id.llRegister);
         etName = findViewById(R.id.etRegName);
         etEmail = findViewById(R.id.etRegEmail);
         etNumber = findViewById(R.id.etRegNumber);
@@ -63,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String branch = etBranch.getText().toString().trim();
 
                 if (name.isEmpty() || email.isEmpty() || authId.isEmpty() || branch.isEmpty() || phone.length() != 10) {
-                    Toast.makeText(RegisterActivity.this, "Please enter proper data", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(llRegister, "Please enter proper data", Snackbar.LENGTH_LONG).show();
                     return;
                 }
 
@@ -83,14 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Error Occurred, Please try again", Toast.LENGTH_SHORT).show();
+                                Snackbar.make(llRegister, "Error Occurred, Please try again", Snackbar.LENGTH_LONG).show();
                             }
                         });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegisterActivity.this, "Error Occurred, Please try again", Toast.LENGTH_SHORT).show();
+                        Snackbar.make(llRegister, "Error Occurred, Please try again", Snackbar.LENGTH_LONG).show();
                     }
                 });
 

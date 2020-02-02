@@ -1,8 +1,10 @@
 package garg.sarthik.starbugs.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import garg.sarthik.starbugs.EventActivity;
 import garg.sarthik.starbugs.POJO.Event;
 import garg.sarthik.starbugs.R;
 import garg.sarthik.starbugs.Statics.Constants;
@@ -48,6 +51,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private List<Event> events;
     private Context ctx;
     private Object obj;
+    private String callerFrag = "";
 
     public NotificationAdapter(List<Event> events, Context ctx, Object obj) {
         this.events = events;
@@ -66,28 +70,45 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         final Event event = events.get(position);
 
-        if(obj instanceof HistoryFragment)
+        if(obj instanceof HistoryFragment) {
+
             holder.itemLayoutButtons.setVisibility(GONE);
+
+            callerFrag = Constants.FRAG_HIST;
+        }
         else {
+
+            callerFrag = Constants.FRAG_NOT;
+
             holder.itemLayoutButtons.setVisibility(View.VISIBLE);
 
             holder.fabReject.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateEvent(event, "REJECT");
+                    updateEvent(event, Constants.EVENT_STATUS_REJECT);
                 }
             });
 
             holder.fabAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateEvent(event, "ACCEPT");
+                    updateEvent(event, Constants.EVENT_STATUS_ACCEPT);
                 }
             });
         }
 
+        final LatLng latlng = Functions.getLatLng(event.getEventLatlng());
 
-        LatLng latlng = Functions.getLatLng(event.getEventLatlng());
+
+        holder.itemLayoutText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, EventActivity.class);
+                intent.putExtra(Constants.EVENT_PARSE, event);
+                intent.putExtra(Constants.FRAG_PARSE, callerFrag);
+                ctx.startActivity(intent);
+            }
+        });
 
         String address = Functions.decodeAddress(ctx,latlng);
         holder.tvItemLocation.setText(address);
@@ -124,6 +145,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         FloatingActionButton fabAccept;
         FloatingActionButton fabReject;
         LinearLayout itemLayoutButtons;
+        LinearLayout itemLayoutText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -131,6 +153,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             tvItemDate = itemView.findViewById(R.id.tvItemDate);
             tvItemLocation = itemView.findViewById(R.id.tvItemLocation);
             mapView = itemView.findViewById(R.id.itemMapView);
+            itemLayoutText = itemView.findViewById(R.id.itemLayoutText);
             itemLayoutButtons = itemView.findViewById(R.id.itemLayoutButtons);
             fabAccept = itemView.findViewById(R.id.fabAccept);
             fabReject = itemView.findViewById(R.id.fabReject);
@@ -139,8 +162,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     }
 
-
     private void updateEvent(Event event, String status){
+
         event.setEventStatus(status);
 
         String[] args = event.getEventId().split("-");
@@ -149,4 +172,5 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Variables.colCamera.document(args[1]).collection(Constants.COL_HISTORY).document(args[0]).set(event);
         Variables.colUser.document(Variables.fireUser.getUid()).collection(Constants.COL_NOTIFICATION).document(event.getEventId()).delete();
     }
+
 }

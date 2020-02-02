@@ -22,8 +22,8 @@ public class Event implements Parcelable {
     String eventId;
     String eventLatlng;
     String eventStartTime;
-    String eventEndTime;
-    String eventStatus;
+    String eventEndTime = "0";
+    String eventStatus = "";
 
 
     public Event() {
@@ -35,7 +35,6 @@ public class Event implements Parcelable {
         this.eventId = Functions.generateId(camId);
         this.eventLatlng = eventLatlng;
         this.eventStartTime = eventStartTime;
-        this.eventEndTime = "0";
     }
 
     protected Event(Parcel in) {

@@ -27,16 +27,18 @@ public class FireMessageService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         Log.i(TAG, "onMessageReceived: " + remoteMessage.getData().get("latlng"));
         String address = Functions.decodeAddress(getBaseContext(), Functions.getLatLng(remoteMessage.getData().get("eventLatlng")));
-        showNotification(address, Functions.formatDateTime(remoteMessage.getData().get("eventStartTime")));
+        showNotification(Functions.formatDateTime(remoteMessage.getData().get("eventStartTime")), address);
     }
 
-    void showNotification(String title, String body){
+    void showNotification(String time, String address){
 
         Notification notification = new NotificationCompat.Builder(this,"FCM")
-                .setContentTitle("Anomaly detected at " + title)
+                .setContentTitle("Anomaly detected!!")
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setAutoCancel(true)
-                .setContentText("Started at " + body)
+                .setContentText("Started at " + time)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Anomaly has been detected at " + address))
                 .build();
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
