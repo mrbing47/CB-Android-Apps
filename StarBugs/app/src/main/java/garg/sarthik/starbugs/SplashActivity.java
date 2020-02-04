@@ -9,6 +9,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -41,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 6969;
     private String TAG = "Auth";
 
-    private ConstraintLayout clSplash;
+    private LinearLayout clSplash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
