@@ -7,6 +7,7 @@ import garg.sarthik.starbugs.Statics.Functions;
 
 public class Event implements Parcelable {
 
+
     public static final Creator<Event> CREATOR = new Creator<Event>() {
         @Override
         public Event createFromParcel(Parcel in) {
@@ -18,12 +19,12 @@ public class Event implements Parcelable {
             return new Event[size];
         }
     };
-
     String eventId;
     String eventLatlng;
     String eventStartTime;
     String eventEndTime = "0";
     String eventStatus = "";
+    String eventGifUrl = "";
 
 
     public Event() {
@@ -43,6 +44,15 @@ public class Event implements Parcelable {
         eventStartTime = in.readString();
         eventEndTime = in.readString();
         eventStatus = in.readString();
+        eventGifUrl = in.readString();
+    }
+
+    public String getEventGifUrl() {
+        return eventGifUrl;
+    }
+
+    public void setEventGifUrl(String eventGifUrl) {
+        this.eventGifUrl = eventGifUrl;
     }
 
     public String getEventId() {
@@ -77,6 +87,7 @@ public class Event implements Parcelable {
         this.eventStatus = eventStatus;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -89,5 +100,6 @@ public class Event implements Parcelable {
         dest.writeString(eventStartTime);
         dest.writeString(eventEndTime);
         dest.writeString(eventStatus);
+        dest.writeString(eventGifUrl);
     }
 }

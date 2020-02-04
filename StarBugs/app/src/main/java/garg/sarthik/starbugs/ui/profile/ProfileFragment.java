@@ -21,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import garg.sarthik.starbugs.POJO.User;
 import garg.sarthik.starbugs.R;
+import garg.sarthik.starbugs.Statics.Functions;
 import garg.sarthik.starbugs.Statics.Variables;
 
 public class ProfileFragment extends Fragment {
@@ -76,7 +77,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onChanged(User user) {
                 tvEmail.setText(user.getUserEmail());
-                tvName.setText(user.getUserName());
+                tvName.setText(Functions.toCapitalise(user.getUserName()));
                 etAuthId.setText(user.getUserAuthId());
                 etPhone.setText(user.getUserNumber());
                 etBranch.setText(user.getUserBranch());

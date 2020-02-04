@@ -4,13 +4,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -35,6 +45,8 @@ public class EventActivity extends AppCompatActivity implements OnMapReadyCallba
     TextView tvEventStartTime;
     TextView tvEventEndTime;
 
+    ImageView eventGif;
+
     LinearLayout llEvent;
     LinearLayout eventLayoutButtons;
     Button btnAccept;
@@ -45,7 +57,7 @@ public class EventActivity extends AppCompatActivity implements OnMapReadyCallba
 
     LatLng latlng = null;
     GoogleMap gMap;
-    private String TAG = "Event";
+    private String TAG = "EventAct";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +70,7 @@ public class EventActivity extends AppCompatActivity implements OnMapReadyCallba
         latlng = Functions.getLatLng(event.getEventLatlng());
 
         llEvent = findViewById(R.id.llEvent);
+        eventGif = findViewById(R.id.ivEventGif);
         eventResponse = findViewById(R.id.eventResponseProgress);
         eventLayoutButtons = findViewById(R.id.eventLayoutButtons);
         tvEventStartTime = findViewById(R.id.tvEventStart);
@@ -68,17 +81,29 @@ public class EventActivity extends AppCompatActivity implements OnMapReadyCallba
         btnAccept = findViewById(R.id.btnEventAccept);
         btnReject = findViewById(R.id.btnEventReject);
 
+
+
         enableButtons(true);
+
+        if (!event.getEventGifUrl().equals(""))
+            Glide.with(getBaseContext())
+                    .asGif()
+                    .load(event.getEventGifUrl())
+                    .apply(RequestOptions.skipMemoryCacheOf(true))
+                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                    .into(eventGif);
 
         if (callerFrag.equals(Constants.FRAG_HIST))
             eventLayoutButtons.setVisibility(GONE);
 
-        tvEventStartTime.setText(Functions.formatDateTime(event.getEventStartTime()));
+        tvEventStartTime.setText(event.getEventStartTime());
 
         if (!event.getEventEndTime().equals("0"))
-            tvEventEndTime.setText(Functions.formatDateTime(event.getEventEndTime()));
+            tvEventEndTime.setText(event.getEventEndTime());
         else
             tvEventEndTime.setText("Event has not ended yet");
+
+        tvEventLocation.setText(Functions.decodeAddress(this, Functions.getLatLng(event.getEventLatlng())));
 
 
         if (event.getEventStatus().equals(Constants.EVENT_STATUS_ACCEPT))

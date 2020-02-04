@@ -12,16 +12,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import garg.sarthik.starbugs.POJO.Event;
-
 public class Functions {
 
-    public static String decodeAddress(Context ctx, LatLng latlng){
+    public static String decodeAddress(Context ctx, LatLng latlng) {
         Geocoder geocoder = new Geocoder(ctx, Locale.getDefault());
 
         try {
-            List<Address> addressList = geocoder.getFromLocation(latlng.latitude, latlng.longitude,1);
-            if(addressList.size() > 0)
+            List<Address> addressList = geocoder.getFromLocation(latlng.latitude, latlng.longitude, 1);
+            if (addressList.size() > 0)
                 return addressList.get(0).getAddressLine(0);
             else
                 return latlng.latitude + " , " + latlng.longitude;
@@ -33,14 +31,14 @@ public class Functions {
     }
 
 
-    public static LatLng getLatLng(String str){
+    public static LatLng getLatLng(String str) {
 
         String[] args = str.split(" , ");
 
         double lat = Double.parseDouble(args[0]);
         double lng = Double.parseDouble(args[1]);
 
-        return new LatLng(lat,lng);
+        return new LatLng(lat, lng);
     }
 
 
@@ -56,7 +54,7 @@ public class Functions {
 
         String res = "" + time;
 
-        if(res.length() == 3)
+        if (res.length() == 3)
             res = "0" + res;
 
         return res;
@@ -79,28 +77,28 @@ public class Functions {
     public static String generateId(long serialNo) {
 
         String currTime = "" + getCurrentTime();
-        if(currTime.length() == 3)
+        if (currTime.length() == 3)
             currTime = "0" + currTime;
 
-        return "" + getCurrentDate() + currTime + "-" +  serialNo;
+        return "" + getCurrentDate() + currTime + "-" + serialNo;
     }
 
     public static String toCapitalise(String txt) {
         String result = "";
 
-        String[] words = txt.split(" ",0);
+        String[] words = txt.split(" ", 0);
 
         for (String w : words) {
 
             String first = w.substring(0, 1).toUpperCase();
             String afterfirst = w.substring(1);
             result += first + afterfirst + " ";
-            Log.e("FUNCTIONS", "toCapitalise: " + result );
+            Log.e("FUNCTIONS", "toCapitalise: " + result);
         }
         return result;
     }
 
-    public static String convertToTime(String _24hrTime){
+    public static String convertToTime(String _24hrTime) {
 
         int nTime = Integer.parseInt(_24hrTime);
         int minute = nTime % 100;
@@ -129,19 +127,19 @@ public class Functions {
         return result;
     }
 
-    public static String formatDateTime(String input){
+    public static String formatDateTime(String input) {
 
-        if(input.length() == 1)
+        if (input.length() == 1)
             return "0";
 
-        String yr = input.substring(0,4).substring(2);
-        String month = input.substring(4,6);
-        String day = input.substring(6,8);
+        String yr = input.substring(0, 4).substring(2);
+        String month = input.substring(4, 6);
+        String day = input.substring(6, 8);
 
-        String hr = input.substring(8,10);
-        String min = input.substring(10,12);
+        String hr = input.substring(8, 10);
+        String min = input.substring(10, 12);
 
-        return day + "/" + month + "/" + yr + ", " + convertToTime(hr+min);
+        return day + "/" + month + "/" + yr + ", " + convertToTime(hr + min);
     }
 
 }

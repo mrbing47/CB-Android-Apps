@@ -3,6 +3,8 @@ package garg.sarthik.starbugs;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,10 +41,14 @@ public class SplashActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 6969;
     private String TAG = "Auth";
 
+    private ConstraintLayout clSplash;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        clSplash = findViewById(R.id.clSplash);
 
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.GoogleBuilder().build());
@@ -100,13 +107,13 @@ public class SplashActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SplashActivity.this, "Failed to Log-in, Please Try Again", Toast.LENGTH_SHORT).show();
+                        Snackbar.make(clSplash,"Failed to Log-in, Please Try Again",Snackbar.LENGTH_LONG).show();
                         Log.e(TAG, "onFailure: ",e );
                     }
                 });
 
             }else{
-                Toast.makeText(this, "Error Occurred, Please try again", Toast.LENGTH_SHORT).show();
+                Snackbar.make(clSplash,"Error Occurred, Please try again",Snackbar.LENGTH_LONG).show();
             }
 
         }

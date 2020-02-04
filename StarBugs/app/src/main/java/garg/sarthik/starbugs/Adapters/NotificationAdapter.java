@@ -112,7 +112,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         String address = Functions.decodeAddress(ctx,latlng);
         holder.tvItemLocation.setText(address);
-        holder.tvItemDate.setText(Functions.formatDateTime(event.getEventStartTime()));
+        holder.tvItemDate.setText(Functions.formatDateTime(event.getEventId().split("-")[0]));
 
         holder.mapView.onCreate(null);
         holder.mapView.getMapAsync(new OnMapReadyCallback() {
